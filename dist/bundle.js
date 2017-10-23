@@ -76,7 +76,7 @@ var _expect2 = _interopRequireDefault(_expect);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function counter() {
+var counter = function counter() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
   var action = arguments[1];
 
@@ -88,7 +88,7 @@ function counter() {
     default:
       return state;
   }
-}
+};
 
 (0, _expect2.default)(counter(0, { type: 'INCREMENT' })).toEqual(1);
 
