@@ -4,7 +4,7 @@ import deepFreeze from 'deep-freeze'
 console.log("Test started.")
 
 const addCounter = (list) => {
-  return list.concat([0]);
+  return [...list, 0]
 };
 
 const testAddCounter = () => {
