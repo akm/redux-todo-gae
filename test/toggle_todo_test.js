@@ -1,4 +1,5 @@
-// Toggle TODO
+import expect from 'expect'
+import deepFreeze from 'deep-freeze'
 
 const toggleTodo = (todo) => {
   return {
