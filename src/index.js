@@ -1,6 +1,9 @@
 import expect from 'expect'
 
 function counter(state, action) {
+  if (typeof state == 'undefined') {
+    return 0
+  }
   if (action.type === 'INCREMENT') {
     return state + 1;
   } else if (action.type === 'DECREMENT') {
@@ -29,5 +32,9 @@ expect(
 expect(
   counter(1, { type: 'SOMETHING_ELSE' })
 ).toEqual(1)
+
+expect(
+  counter(undefined, {})
+).toEqual(0)
 
 console.log('Tests passwd')
