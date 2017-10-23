@@ -1,15 +1,18 @@
 import expect from 'expect'
+import deepFreeze from 'deep-freeze'
 
 console.log("Test started.")
 
 const addCounter = (list) => {
-  list.push(0);
-  return list
+  return list.concat([0]);
 };
 
 const testAddCounter = () => {
   const listBefore = [];
   const listAfter = [0];
+
+  deepFreeze(listBefore);
+
   expect(
     addCounter(listBefore)
   ).toEqual(listAfter);
