@@ -26,7 +26,8 @@
     "build": "webpack",
     "start": "http-server",
     "start:dev": "webpack-dev-server",
-    "test": "npm run build && node dist/test.bundle.js"
+    "test": "npm run build && node dist/test.bundle.js",
+    "todos": "npm run build && node dist/todos.bundle.js"
   },
   "keywords": [],
   "author": "",
