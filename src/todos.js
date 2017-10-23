@@ -34,7 +34,7 @@ export const todos = (state = [], action) => {
   }
 };
 
-const visibilityFilter = (
+export const visibilityFilter = (
   state = 'SHOW_ALL',
   action
 ) => {
@@ -44,17 +44,4 @@ const visibilityFilter = (
   default:
     return state;
   }
-};
-
-export const todoApp = (state = {}, action) => {
-  return {
-    todos: todos(
-      state.todos,
-      action
-    ),
-    visibilityFilter: visibilityFilter(
-      state.visibilityFilter,
-      action
-    )
-  };
 };

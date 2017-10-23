@@ -1,5 +1,10 @@
-import Redux, { createStore } from 'redux';
-import {todo, todos, todoApp} from '../src/todos'
+import Redux, { createStore, combineReducers } from 'redux';
+import {todo, todos, visibilityFilter} from '../src/todos'
+
+const todoApp = combineReducers({
+  todos: todos,
+  visibilityFilter: visibilityFilter
+});
 
 const store = createStore(todoApp);
 
