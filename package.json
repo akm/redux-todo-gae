@@ -4,7 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "dependencies": {
-    "expect": "^21.2.1"
+    "expect": "^21.2.1",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
