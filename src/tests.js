@@ -63,9 +63,10 @@ testIncrementCounter();
 // Toggle TODO
 
 const toggleTodo = (todo) => {
-  return Object.assign({}, todo, {
+  return {
+    ...todo,
     completed: !todo.completed
-  });
+  };
 };
 
 const testToggleTodo = () => {
