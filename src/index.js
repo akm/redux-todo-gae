@@ -4,11 +4,13 @@ function counter(state, action) {
   if (typeof state == 'undefined') {
     return 0
   }
-  if (action.type === 'INCREMENT') {
+
+  switch (action.type) {
+  case 'INCREMENT':
     return state + 1;
-  } else if (action.type === 'DECREMENT') {
+  case 'DECREMENT':
     return state - 1;
-  } else {
+  default:
     return state;
   }
 }
