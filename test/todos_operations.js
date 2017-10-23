@@ -1,12 +1,4 @@
-import Redux, { createStore, combineReducers } from 'redux';
-import {todo, todos, visibilityFilter} from '../src/todos'
-
-const todoApp = combineReducers({
-  todos,
-  visibilityFilter
-});
-
-const store = createStore(todoApp);
+import {todo, todos, visibilityFilter, todoApp, store} from '../src/todos'
 
 console.log('Initial state:');
 console.log(store.getState());

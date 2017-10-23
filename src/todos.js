@@ -1,3 +1,5 @@
+import { createStore, combineReducers } from 'redux';
+
 export const todo = (state, action) => {
   switch (action.type) {
   case 'ADD_TODO':
@@ -45,3 +47,10 @@ export const visibilityFilter = (
     return state;
   }
 };
+
+export const todoApp = combineReducers({
+  todos,
+  visibilityFilter
+});
+
+export const store = createStore(todoApp);
