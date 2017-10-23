@@ -37,4 +37,4 @@ expect(
   counter(undefined, {})
 ).toEqual(0)
 
-console.log('Tests passwd')
+console.log('Tests passed')
