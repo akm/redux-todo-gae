@@ -1,21 +1,5 @@
-import Redux, { createStore } from 'redux';
+import Redux, { createStore, combineReducers } from 'redux';
 import {todo, todos, visibilityFilter} from '../src/todos'
-
-const combineReducers = (reducers) => {
-  return (state = {}, action) => {
-    return Object.keys(reducers).reduce(
-      (nextState, key) => {
-        nextState[key] = reducers[key](
-          state[key],
-          action
-        );
-        return nextState;
-      },
-      {}
-    );
-  }
-}
-
 
 const todoApp = combineReducers({
   todos,
