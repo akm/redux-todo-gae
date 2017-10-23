@@ -1,10 +1,6 @@
 import expect from 'expect'
 
-function counter(state, action) {
-  if (typeof state == 'undefined') {
-    return 0
-  }
-
+function counter(state = 0, action) {
   switch (action.type) {
   case 'INCREMENT':
     return state + 1;
