@@ -77,6 +77,9 @@ var _expect2 = _interopRequireDefault(_expect);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function counter(state, action) {
+  if (typeof state == 'undefined') {
+    return 0;
+  }
   if (action.type === 'INCREMENT') {
     return state + 1;
   } else if (action.type === 'DECREMENT') {
@@ -96,7 +99,9 @@ function counter(state, action) {
 
 (0, _expect2.default)(counter(1, { type: 'SOMETHING_ELSE' })).toEqual(1);
 
-console.log('Tests passwd');
+(0, _expect2.default)(counter(undefined, {})).toEqual(0);
+
+console.log('Tests passed');
 
 /***/ }),
 /* 1 */
