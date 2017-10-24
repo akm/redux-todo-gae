@@ -10,38 +10,8 @@ import { addTodo, setVisibilityFilter, toggleTodo } from './actions/TodoActions'
 import { loadState, saveState } from './localStorage'
 
 import Footer from './components/Footer'
-import TodoList from './components/TodoList'
+import VisibleTodoList from './components/VisibleTodoList'
 import AddTodo from './components/AddTodo'
-
-const getVisibleTodos = (
-  todos,
-  filter
-) => {
-  switch (filter) {
-  case 'SHOW_ALL':
-    return todos;
-  case 'SHOW_COMPLETED':
-    return todos.filter(t => t.completed);
-  case 'SHOW_ACTIVE':
-    return todos.filter(t => !t.completed);
-  }
-}
-
-const mapSateToTodoListProps = (state) => ({
-  todos: getVisibleTodos(
-    state.todos,
-    state.visibilityFilter
-  )
-});
-const mapDispatchToTodoListProps = (dispatch) => ({
-  onTodoClick(id) {
-    dispatch(toggleTodo(id))
-  }
-});
-const VisibleTodoList = connect(
-  mapSateToTodoListProps,
-  mapDispatchToTodoListProps
-)(TodoList);
 
 const TodoApp = () => (
   <div>
