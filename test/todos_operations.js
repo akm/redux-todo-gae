@@ -1,4 +1,4 @@
-import {todo, todos, visibilityFilter, todoApp, store} from '../src/todos'
+import {todo, todos, visibilityFilter, todoApp, store} from '../src/reducers/todos'
 
 console.log('Initial state:');
 console.log(store.getState());

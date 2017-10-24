@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Provider, connect } from 'react-redux';
 import throttle from 'lodash/throttle';
 
-import {todo, todos, visibilityFilter, todoApp} from './todos';
+import {todo, todos, visibilityFilter, todoApp} from './reducers/todos';
 import { addTodo, setVisibilityFilter, toggleTodo } from './actions/TodoActions';
 import { loadState, saveState } from './localStorage'
 

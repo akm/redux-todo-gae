@@ -1,7 +1,7 @@
 import expect from 'expect'
 import deepFreeze from 'deep-freeze'
 
-import {todo, todos} from '../src/todos'
+import {todo, todos} from '../src/reducers/todos'
 
 const testAddTodo = () => {
   const stateBefore = [];
