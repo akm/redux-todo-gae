@@ -187,10 +187,7 @@ class VisibleTodoList extends Component {
 }
 
 let nextTodoId = 0;
-const TodoApp = ({
-  todos,
-  visibilityFilter
-}) => (
+const TodoApp = () => (
   <div>
     <AddTodo />
     <VisibleTodoList />
