@@ -1,4 +1,8 @@
-import {todo, todos, visibilityFilter, todoApp, store} from '../src/todos'
+import Redux, { createStore } from 'redux';
+
+import todoApp from '../src/reducers/index'
+
+const store = createStore(todoApp)
 
 console.log('Initial state:');
 console.log(store.getState());
