@@ -145,12 +145,8 @@ let AddTodo = ({ dispatch }) => {
   );
 };
 AddTodo = connect(
-  state => {
-    return {};
-  },
-  dispatch => {
-    return { dispatch };
-  }
+  null,
+  null
 )(AddTodo);
 
 const getVisibleTodos = (
