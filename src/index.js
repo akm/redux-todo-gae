@@ -10,23 +10,7 @@ import { addTodo, setVisibilityFilter, toggleTodo } from './actions/TodoActions'
 import { loadState, saveState } from './localStorage'
 
 import Footer from './components/Footer'
-import Todo from './components/Todo'
-
-
-const TodoList = ({
-  todos,
-  onTodoClick
-}) => (
-  <ul>
-    {todos.map(todo =>
-      <Todo
-        key={todo.id}
-        {...todo}
-        onClick={() => onTodoClick(todo.id)}
-      />
-    )}
-  </ul>
-);
+import TodoList from './components/TodoList'
 
 let AddTodo = ({ dispatch }) => {
   let input;
