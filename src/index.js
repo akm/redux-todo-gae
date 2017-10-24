@@ -13,7 +13,7 @@ import Footer from './components/Footer'
 import VisibleTodoList from './components/VisibleTodoList'
 import AddTodo from './components/AddTodo'
 
-const TodoApp = () => (
+const App = () => (
   <div>
     <AddTodo />
     <VisibleTodoList />
@@ -33,7 +33,7 @@ store.subscribe(throttle(() => {
 
 ReactDOM.render(
   <Provider store={store}>
-    <TodoApp />
+    <App />
   </Provider>,
   document.getElementById('root')
 );
