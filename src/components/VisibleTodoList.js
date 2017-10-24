@@ -18,10 +18,10 @@ const getVisibleTodos = (
   }
 }
 
-const mapSateToTodoListProps = (state) => ({
+const mapSateToTodoListProps = (state, ownProps) => ({
   todos: getVisibleTodos(
     state.todos,
-    state.visibilityFilter
+    ownProps.filter
   )
 });
 const mapDispatchToTodoListProps = (dispatch) => ({
