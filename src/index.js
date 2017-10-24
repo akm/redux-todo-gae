@@ -7,7 +7,7 @@ import { Provider, connect } from 'react-redux';
 import throttle from 'lodash/throttle';
 
 import {todo, todos, visibilityFilter, todoApp} from './todos';
-import { addTodo, setVisibilityFilter, toggleTodo } from './actions';
+import { addTodo, setVisibilityFilter, toggleTodo } from './actions/TodoActions';
 import { loadState, saveState } from './localStorage'
 
 const Link = ({
