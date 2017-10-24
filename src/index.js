@@ -123,7 +123,7 @@ const TodoList = ({
 );
 
 let nextTodoId = 0;
-const AddTodo = (props, { store }) => {
+let AddTodo = ({ dispatch }) => {
   let input;
 
   return (
@@ -132,7 +132,7 @@ const AddTodo = (props, { store }) => {
             input = node;
         }} />
       <button onClick={() => {
-        store.dispatch({
+        dispatch({
           type: 'ADD_TODO',
           text: input.value,
           id: nextTodoId++
@@ -144,9 +144,14 @@ const AddTodo = (props, { store }) => {
     </div>
   );
 };
-AddTodo.contextTypes = {
-  store: PropTypes.object
-}
+AddTodo = connect(
+  state => {
+    return {};
+  },
+  dispatch => {
+    return { dispatch };
+  }
+)(AddTodo);
 
 const getVisibleTodos = (
   todos,
