@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { Provider, connect } from 'react-redux';
 
 import {todo, todos, visibilityFilter, todoApp} from './todos';
+import { addTodo } from './actions';
 import { loadState, saveState } from './localStorage'
 
 const Link = ({
@@ -123,7 +124,6 @@ const TodoList = ({
   </ul>
 );
 
-let nextTodoId = 0;
 let AddTodo = ({ dispatch }) => {
   let input;
 
@@ -133,11 +133,7 @@ let AddTodo = ({ dispatch }) => {
             input = node;
         }} />
       <button onClick={() => {
-        dispatch({
-          type: 'ADD_TODO',
-          text: input.value,
-          id: nextTodoId++
-        });
+        dispatch(addTodo(input.value));
         input.value = '';
       }}>
         Add Todo
