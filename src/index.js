@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { Provider, connect } from 'react-redux';
 
 import {todo, todos, visibilityFilter, todoApp} from './todos';
+import { loadState, saveState } from './localStorage'
 
 const Link = ({
   active,
@@ -187,15 +188,13 @@ const TodoApp = () => (
   </div>
 );
 
-const persistedState = {
-  todos: [{
-    id: 0,
-    text: 'Welcome back!',
-    completed: false,
-  }],
-}
+const persistedState = loadState();
 const store = createStore(todoApp, persistedState)
 console.log(store.getState());
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 ReactDOM.render(
   <Provider store={store}>
