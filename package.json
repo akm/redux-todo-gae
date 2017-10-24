@@ -24,13 +24,12 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "deep-freeze": "0.0.1",
-    "http-server": "^0.10.0",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.3"
   },
   "scripts": {
     "build": "webpack",
-    "start": "http-server ./dist",
+    "start": "webpack-dev-server",
     "start:dev": "webpack-dev-server",
     "test": "npm run build && node dist/test.bundle.js"
   },
