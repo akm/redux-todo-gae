@@ -162,7 +162,7 @@ const getVisibleTodos = (
   }
 }
 
-const mapSateToProps = (state) => {
+const mapSateToTodoListProps = (state) => {
   return {
     todos: getVisibleTodos(
       state.todos,
@@ -171,7 +171,7 @@ const mapSateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToTodoListProps = (dispatch) => {
   return {
     onTodoClick: (id) => {
       dispatch({
@@ -183,8 +183,8 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const VisibleTodoList = connect(
-  mapSateToProps,
-  mapDispatchToProps
+  mapSateToTodoListProps,
+  mapDispatchToTodoListProps
 )(TodoList);
 
 const TodoApp = () => (
