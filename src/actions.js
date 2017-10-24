@@ -4,3 +4,8 @@ export const addTodo = (text) => ({
   id: nextTodoId++,
   text,
 });
+
+export const setVisibilityFilter = (filter) => ({
+  type: 'SET_VISIBILITY_FILTER',
+  filter,
+});

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Provider, connect } from 'react-redux';
 
 import {todo, todos, visibilityFilter, todoApp} from './todos';
-import { addTodo } from './actions';
+import { addTodo, setVisibilityFilter } from './actions';
 import { loadState, saveState } from './localStorage'
 
 const Link = ({
@@ -51,10 +51,7 @@ class FilterLink extends Component {
       <Link
         active={props.filter ===state.visibilityFilter}
         onClick={() =>
-          store.dispatch({
-            type: 'SET_VISIBILITY_FILTER',
-            filter: props.filter
-          })
+          store.dispatch(setVisibilityFilter(props.filter))
         }
       >
         {props.children}
