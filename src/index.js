@@ -9,32 +9,7 @@ import {todo, todos, visibilityFilter, todoApp} from './reducers/todos';
 import { addTodo, setVisibilityFilter, toggleTodo } from './actions/TodoActions';
 import { loadState, saveState } from './localStorage'
 
-import FilterLink from './components/FilterLink'
-
-const Footer = () => (
-  <p>
-    Show:
-    {' '}
-    <FilterLink
-      filter='SHOW_ALL'
-    >
-      All
-    </FilterLink>
-    {' '}
-    <FilterLink
-      filter='SHOW_ACTIVE'
-    >
-      Active
-    </FilterLink>
-    {' '}
-    <FilterLink
-      filter='SHOW_COMPLETED'
-    >
-      Completed
-    </FilterLink>
-  </p>
-);
-
+import Footer from './components/Footer'
 
 const Todo = ({
   onClick,
