@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Provider, connect } from 'react-redux';
 
 import {todo, todos, visibilityFilter, todoApp} from './todos';
-import { addTodo, setVisibilityFilter } from './actions';
+import { addTodo, setVisibilityFilter, toggleTodo } from './actions';
 import { loadState, saveState } from './localStorage'
 
 const Link = ({
@@ -162,10 +162,7 @@ const mapSateToTodoListProps = (state) => ({
 });
 const mapDispatchToTodoListProps = (dispatch) => ({
   onTodoClick(id) {
-    dispatch({
-      type: 'TOGGLE_TODO',
-      id
-    })
+    dispatch(toggleTodo(id))
   }
 });
 const VisibleTodoList = connect(
