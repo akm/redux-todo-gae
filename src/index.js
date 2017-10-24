@@ -1,12 +1,11 @@
 // import expect from 'expect'
 import Redux, { createStore } from 'redux';
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 import throttle from 'lodash/throttle';
 
-import {todo, todos, visibilityFilter, todoApp} from './reducers/todos';
-import { addTodo, setVisibilityFilter, toggleTodo } from './actions/TodoActions';
+import { todoApp } from './reducers/todos';
 import { loadState, saveState } from './localStorage'
 
 import App from './components/App'
