@@ -1,15 +1,14 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom'
-import { Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import App from './App'
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    <BrowserRouter>
-      <Route path='/' component={App}/>
-    </BrowserRouter>
+    <Router>
+      <Route path="/" component={App}/>
+    </Router>
   </Provider>
 );
 
