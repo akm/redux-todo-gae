@@ -79,7 +79,7 @@ const Footer = () => (
       Completed
     </FilterLink>
   </p>
-);  
+);
 
 
 const Todo = ({
@@ -150,6 +150,40 @@ const getVisibleTodos = (
   }
 }
 
+class VisibleTodoList extends Component {
+  componentDidMount() {
+    this.unsubscribe = store.subscribe(() =>
+      this.forceUpdate()
+    );
+  }
+
+  componentWilUnmount() {
+    this.unsubscribe();
+  }
+
+  render() {
+    const props = this.props;
+    const state = store.getState();
+
+    return (
+      <TodoList
+        todos={
+          getVisibleTodos(
+            state.todos,
+            state.visibilityFilter
+          )
+        }
+        onTodoClick={id =>
+          store.dispatch({
+            type: 'TOGGLE_TODO',
+            id
+          })
+        }
+      />
+    );
+  }
+}
+
 let nextTodoId = 0;
 const TodoApp = ({
   todos,
@@ -164,14 +198,7 @@ const TodoApp = ({
           id: nextTodoId++
         })
     } />
-    <TodoList
-      todos={getVisibleTodos(todos, visibilityFilter)}
-      onTodoClick={id =>
-        store.dispatch({
-          type: 'TOGGLE_TODO',
-          id
-         })
-    } />
+    <VisibleTodoList />
     <Footer />
   </div>
 );
