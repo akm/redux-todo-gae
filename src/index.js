@@ -188,8 +188,10 @@ const TodoApp = () => (
 );
 
 
+const store = createStore(todoApp)
+
 ReactDOM.render(
-  <Provider store={createStore(todoApp)}>
+  <Provider store={store}>
     <TodoApp />
   </Provider>,
   document.getElementById('root')
