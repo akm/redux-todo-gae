@@ -115,9 +115,7 @@ const TodoList = ({
   </ul>
 );
 
-const AddTodo = ({
-  onAddClick
-}) => {
+const AddTodo = () => {
   let input;
 
   return (
@@ -125,12 +123,16 @@ const AddTodo = ({
         <input ref={node => {
             input = node;
         }} />
-        <button onClick={() => {
-          onAddClick(input.value);
-            input.value = '';
-        }}>
-          Add Todo
-        </button>
+      <button onClick={() => {
+        store.dispatch({
+          type: 'ADD_TODO',
+          text: input.value,
+          id: nextTodoId++
+        });
+        input.value = '';
+      }}>
+        Add Todo
+      </button>
     </div>
   );
 };
@@ -190,14 +192,7 @@ const TodoApp = ({
   visibilityFilter
 }) => (
   <div>
-    <AddTodo
-      onAddClick={text =>
-        store.dispatch({
-          type: 'ADD_TODO',
-          text: text,
-          id: nextTodoId++
-        })
-    } />
+    <AddTodo />
     <VisibleTodoList />
     <Footer />
   </div>
