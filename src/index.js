@@ -2,7 +2,6 @@
 import Redux, { createStore } from 'redux';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 import { Provider, connect } from 'react-redux';
 import throttle from 'lodash/throttle';
 
@@ -10,40 +9,7 @@ import {todo, todos, visibilityFilter, todoApp} from './reducers/todos';
 import { addTodo, setVisibilityFilter, toggleTodo } from './actions/TodoActions';
 import { loadState, saveState } from './localStorage'
 
-import Link from './components/Link'
-
-class FilterLink extends Component {
-  componentDidMount() {
-    const { store } = this.context;
-    this.unsubscribe = store.subscribe(() =>
-      this.forceUpdate()
-    );
-  }
-
-  componentWilUnmount() {
-    this.unsubscribe();
-  }
-
-  render() {
-    const props = this.props;
-    const { store } = this.context;
-    const state = store.getState();
-
-    return (
-      <Link
-        active={props.filter ===state.visibilityFilter}
-        onClick={() =>
-          store.dispatch(setVisibilityFilter(props.filter))
-        }
-      >
-        {props.children}
-      </Link>
-    );
-  }
-}
-FilterLink.contextTypes = {
-  store: PropTypes.object
-}
+import FilterLink from './components/FilterLink'
 
 const Footer = () => (
   <p>
