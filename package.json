@@ -30,7 +30,7 @@
   },
   "scripts": {
     "build": "webpack",
-    "start": "http-server ./dist",
+    "start": "webpack-dev-server",
     "start:dev": "webpack-dev-server",
     "test": "npm run build && node dist/test.bundle.js"
   },
