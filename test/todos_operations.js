@@ -1,6 +1,6 @@
 import Redux, { createStore } from 'redux';
 
-import todoApp from '../src/reducers/index'
+import todoApp from '../src/reducers'
 
 const store = createStore(todoApp)
 
