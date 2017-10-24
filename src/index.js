@@ -2,6 +2,7 @@
 import Redux, { createStore } from 'redux';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 import {todo, todos, visibilityFilter, todoApp} from './todos';
 
@@ -58,10 +59,8 @@ class FilterLink extends Component {
     );
   }
 }
-console.log("React.PropTypes: ", React.PropTypes);
-
 FilterLink.contextTypes = {
-  store: React.PropTypes.object
+  store: PropTypes.object
 }
 
 const Footer = () => (
@@ -145,7 +144,7 @@ const AddTodo = (props, { store }) => {
   );
 };
 AddTodo.contextTypes = {
-  store: React.PropTypes.object
+  store: PropTypes.object
 }
 
 const getVisibleTodos = (
@@ -198,7 +197,7 @@ class VisibleTodoList extends Component {
   }
 }
 VisibleTodoList.contextTypes = {
-  store: React.PropTypes.object
+  store: PropTypes.object
 }
 
 const TodoApp = () => (
@@ -221,7 +220,7 @@ class Provider extends Component {
   }
 }
 Provider.childContextTypes = {
-  store: React.PropTypes.object
+  store: PropTypes.object
 };
 
 
