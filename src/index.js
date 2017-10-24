@@ -8,7 +8,8 @@ import {todo, todos, visibilityFilter, todoApp, store} from './todos';
 const FilterLink = ({
   filter,
   currentFilter,
-  children
+  children,
+  onClick
 }) => {
   if (filter == currentFilter) {
     return <span>{children}</span>;
@@ -18,16 +19,47 @@ const FilterLink = ({
     <a href='#'
       onClick={e => {
         e.preventDefault();
-        store.dispatch({
-          type: 'SET_VISIBILITY_FILTER',
-          filter
-        });
+        onClick(filter);
       }}
       >
       {children}
     </a>
   );
 };
+
+const Footer = ({
+  visibilityFilter,
+  onFilterClick
+}) => (
+  <p>
+    Show:
+    {' '}
+    <FilterLink
+      filter='SHOW_ALL'
+      currentFilter={visibilityFilter}
+      onClick={onFilterClick}
+    >
+      All
+    </FilterLink>
+    {' '}
+    <FilterLink
+      filter='SHOW_ACTIVE'
+      currentFilter={visibilityFilter}
+      onClick={onFilterClick}
+    >
+      Active
+    </FilterLink>
+    {' '}
+    <FilterLink
+      filter='SHOW_COMPLETED'
+      currentFilter={visibilityFilter}
+      onClick={onFilterClick}
+    >
+      Completed
+    </FilterLink>
+  </p>
+);  
+
 
 const Todo = ({
   onClick,
@@ -122,31 +154,15 @@ class TodoApp extends Component {
               type: 'TOGGLE_TODO',
               id
              })
-          } />
-        <p>
-          Show:
-          {' '}
-          <FilterLink
-            filter='SHOW_ALL'
-            currentFilter={visibilityFilter}
-          >
-            All
-          </FilterLink>
-          {' '}
-          <FilterLink
-            filter='SHOW_ACTIVE'
-            currentFilter={visibilityFilter}
-          >
-            Active
-          </FilterLink>
-          {' '}
-          <FilterLink
-            filter='SHOW_COMPLETED'
-            currentFilter={visibilityFilter}
-          >
-            Completed
-          </FilterLink>
-        </p>
+        } />
+        <Footer
+          visibilityFilter={visibilityFilter}
+          onFilterClick={filter =>
+            store.dispatch({
+              type: 'SET_VISIBILITY_FILTER',
+              filter
+            })
+         } />
       </div>
     );
   }
