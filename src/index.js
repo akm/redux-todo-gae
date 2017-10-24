@@ -193,7 +193,9 @@ const store = createStore(todoApp, persistedState)
 console.log(store.getState());
 
 store.subscribe(() => {
-  saveState(store.getState());
+  saveState({
+    todos: store.getState().todos
+  });
 });
 
 ReactDOM.render(
