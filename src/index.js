@@ -161,18 +161,18 @@ const getVisibleTodos = (
 }
 
 const mapSateToTodoListProps = (state) => ({
-    todos: getVisibleTodos(
-      state.todos,
-      state.visibilityFilter
-    )
+  todos: getVisibleTodos(
+    state.todos,
+    state.visibilityFilter
+  )
 });
 const mapDispatchToTodoListProps = (dispatch) => ({
-    onTodoClick(id) {
-      dispatch({
-        type: 'TOGGLE_TODO',
-        id
-      })
-    }
+  onTodoClick(id) {
+    dispatch({
+      type: 'TOGGLE_TODO',
+      id
+    })
+  }
 });
 const VisibleTodoList = connect(
   mapSateToTodoListProps,
