@@ -11,25 +11,7 @@ import { loadState, saveState } from './localStorage'
 
 import Footer from './components/Footer'
 import TodoList from './components/TodoList'
-
-let AddTodo = ({ dispatch }) => {
-  let input;
-
-  return (
-      <div>
-        <input ref={node => {
-            input = node;
-        }} />
-      <button onClick={() => {
-        dispatch(addTodo(input.value));
-        input.value = '';
-      }}>
-        Add Todo
-      </button>
-    </div>
-  );
-};
-AddTodo = connect()(AddTodo);
+import AddTodo from './components/AddTodo'
 
 const getVisibleTodos = (
   todos,
