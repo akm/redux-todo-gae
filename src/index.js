@@ -134,32 +134,32 @@ const TodoApp = ({
   todos,
   visibilityFilter
 }) => (
-      <div>
-        <AddTodo
-          onAddClick={text =>
-            store.dispatch({
-              type: 'ADD_TODO',
-              text: text,
-              id: nextTodoId++
-            })
-        } />
-        <TodoList
-          todos={getVisibleTodos(todos, visibilityFilter)}
-          onTodoClick={id =>
-            store.dispatch({
-              type: 'TOGGLE_TODO',
-              id
-             })
-        } />
-        <Footer
-          visibilityFilter={visibilityFilter}
-          onFilterClick={filter =>
-            store.dispatch({
-              type: 'SET_VISIBILITY_FILTER',
-              filter
-            })
-         } />
-      </div>
+  <div>
+    <AddTodo
+      onAddClick={text =>
+        store.dispatch({
+          type: 'ADD_TODO',
+          text: text,
+          id: nextTodoId++
+        })
+    } />
+    <TodoList
+      todos={getVisibleTodos(todos, visibilityFilter)}
+      onTodoClick={id =>
+        store.dispatch({
+          type: 'TOGGLE_TODO',
+          id
+         })
+    } />
+    <Footer
+      visibilityFilter={visibilityFilter}
+      onFilterClick={filter =>
+        store.dispatch({
+          type: 'SET_VISIBILITY_FILTER',
+          filter
+        })
+     } />
+  </div>
 );
 
 const render = () => {
