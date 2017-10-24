@@ -10,24 +10,8 @@ import { addTodo, setVisibilityFilter, toggleTodo } from './actions/TodoActions'
 import { loadState, saveState } from './localStorage'
 
 import Footer from './components/Footer'
+import Todo from './components/Todo'
 
-const Todo = ({
-  onClick,
-  completed,
-  text
-}) => (
-  <li
-    onClick={onClick}
-    style={{
-      textDecoration:
-      completed ?
-        'line-through' :
-        'none'
-    }}
-  >
-    {text}
-  </li>
-);
 
 const TodoList = ({
   todos,
