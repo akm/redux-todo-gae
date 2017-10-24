@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import throttle from 'lodash/throttle';
 
-import { todoApp } from './reducers/todos';
+import todoApp from './reducers/index';
 import { loadState, saveState } from './localStorage'
 
 import App from './components/App'
