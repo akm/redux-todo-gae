@@ -133,8 +133,7 @@ let nextTodoId = 0;
 const TodoApp = ({
   todos,
   visibilityFilter
-}) => {
-    return (
+}) => (
       <div>
         <AddTodo
           onAddClick={text =>
@@ -161,8 +160,7 @@ const TodoApp = ({
             })
          } />
       </div>
-    );
-};
+);
 
 const render = () => {
   ReactDOM.render(
