@@ -170,7 +170,6 @@ const mapSateToTodoListProps = (state) => {
     )
   };
 };
-
 const mapDispatchToTodoListProps = (dispatch) => {
   return {
     onTodoClick: (id) => {
@@ -181,7 +180,6 @@ const mapDispatchToTodoListProps = (dispatch) => {
     }
   };
 }
-
 const VisibleTodoList = connect(
   mapSateToTodoListProps,
   mapDispatchToTodoListProps
