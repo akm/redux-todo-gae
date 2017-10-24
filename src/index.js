@@ -9,17 +9,7 @@ import {todo, todos, visibilityFilter, todoApp} from './reducers/todos';
 import { addTodo, setVisibilityFilter, toggleTodo } from './actions/TodoActions';
 import { loadState, saveState } from './localStorage'
 
-import Footer from './components/Footer'
-import VisibleTodoList from './components/VisibleTodoList'
-import AddTodo from './components/AddTodo'
-
-const App = () => (
-  <div>
-    <AddTodo />
-    <VisibleTodoList />
-    <Footer />
-  </div>
-);
+import App from './components/App'
 
 const persistedState = loadState();
 const store = createStore(todoApp, persistedState)
