@@ -130,13 +130,10 @@ const getVisibleTodos = (
 }
 
 let nextTodoId = 0;
-class TodoApp extends Component {
-  render() {
-    const {
-      todos,
-      visibilityFilter
-    } = this.props;
-    const visibleTodos = getVisibleTodos(todos, visibilityFilter);
+const TodoApp = ({
+  todos,
+  visibilityFilter
+}) => {
     return (
       <div>
         <AddTodo
@@ -148,7 +145,7 @@ class TodoApp extends Component {
             })
         } />
         <TodoList
-          todos={visibleTodos}
+          todos={getVisibleTodos(todos, visibilityFilter)}
           onTodoClick={id =>
             store.dispatch({
               type: 'TOGGLE_TODO',
@@ -165,8 +162,7 @@ class TodoApp extends Component {
          } />
       </div>
     );
-  }
-}
+};
 
 const render = () => {
   ReactDOM.render(
