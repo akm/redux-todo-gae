@@ -20,10 +20,7 @@ const getVisibleTodos = (
 }
 
 const mapSateToTodoListProps = (state, { match }) => ({
-  todos: getVisibleTodos(
-    state.todos,
-    match.params.filter || 'all'
-  )
+  todos: getVisibleTodos(state.todos, match.params.filter || 'all')
 });
 const mapDispatchToTodoListProps = (dispatch) => ({
   onTodoClick(id) {
