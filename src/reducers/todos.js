@@ -37,14 +37,14 @@ const todos = (state = [], action) => {
 export default todos
 
 // Selector function
-export const getVisibleTodos = (todos, filter) => {
+export const getVisibleTodos = (state, filter) => {
   switch (filter) {
   case 'all':
-    return todos;
+    return state;
   case 'completed':
-    return todos.filter(t => t.completed);
+    return state.filter(t => t.completed);
   case 'active':
-    return todos.filter(t => !t.completed);
+    return state.filter(t => !t.completed);
   default:
     throw new Error(`Unknown filter: ${filter}.`)
   }
