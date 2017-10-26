@@ -4,12 +4,10 @@ import Footer from './Footer'
 import VisibleTodoList from './VisibleTodoList'
 import AddTodo from './AddTodo'
 
-const App = ({ match }) => (
+const App = () => (
   <div>
     <AddTodo />
-    <VisibleTodoList
-      filter={match.params.filter || 'all'}
-    />
+    <VisibleTodoList />
     <Footer />
   </div>
 );
