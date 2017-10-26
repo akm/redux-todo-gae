@@ -36,6 +36,7 @@ const todos = (state = [], action) => {
 
 export default todos
 
+// Selector function
 export const getVisibleTodos = (todos, filter) => {
   switch (filter) {
   case 'all':
