@@ -19,10 +19,10 @@ const getVisibleTodos = (
   }
 }
 
-const mapSateToTodoListProps = (state, ownProps) => ({
+const mapSateToTodoListProps = (state, { match }) => ({
   todos: getVisibleTodos(
     state.todos,
-    ownProps.match.params.filter || 'all'
+    match.params.filter || 'all'
   )
 });
 const mapDispatchToTodoListProps = (dispatch) => ({
