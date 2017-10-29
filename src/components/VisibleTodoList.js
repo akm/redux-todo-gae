@@ -13,9 +13,14 @@ class VisibleTodoList extends Component {
   }
 }
 
-const mapSateToTodoListProps = (state, { match }) => ({
-  todos: getVisibleTodos(state, match.params.filter || 'all')
-});
+const mapSateToTodoListProps = (state, { match }) => {
+  const filter = match.params.filter || 'all';
+  return {
+    todos: getVisibleTodos(state, filter),
+    filter,
+  };
+}
+
 VisibleTodoList = withRouter(connect(
   mapSateToTodoListProps,
   { onTodoClick: toggleTodo },
