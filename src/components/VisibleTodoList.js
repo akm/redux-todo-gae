@@ -26,7 +26,13 @@ class VisibleTodoList extends Component {
   }
 
   render() {
-    return <TodoList {...this.props} />;
+    const { toggleTodo, ...rest } = this.props;
+    return (
+      <TodoList
+        {...rest}
+        onTodoClick={toggleTodo}
+      />
+    );
   }
 }
 
