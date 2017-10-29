@@ -33,6 +33,15 @@ const byId = (state = {}, action) => {
   }
 };
 
+const allIds = (state = [], action) => {
+  switch (action.type) {
+  case 'ADD_TODO':
+    return [...state, action.id];
+  default:
+    return state;
+  }
+};
+
 export default todos
 
 // Selector function
