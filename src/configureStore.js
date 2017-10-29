@@ -25,7 +25,9 @@ const configureStore = () => {
   const persistedState = loadState();
   const store = createStore(todoApp, persistedState)
 
-  store.dispatch = addLoggingToDispatch(store)
+  if (process.env.NODE_ENV !== 'production') {
+    store.dispatch = addLoggingToDispatch(store);
+  }
 
   store.subscribe(throttle(() => {
     saveState({
