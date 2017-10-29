@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 import TodoList from './TodoList'
-import { toggleTodo, receiveTodos } from '../actions/TodoActions'
+import * as actions from '../actions/TodoActions'
 import { getVisibleTodos } from '../reducers';
 import { fetchTodos } from '../api';
 
@@ -40,7 +40,7 @@ const mapSateToTodoListProps = (state, { match }) => {
 
 VisibleTodoList = withRouter(connect(
   mapSateToTodoListProps,
-  { onTodoClick: toggleTodo, receiveTodos },
+  actions
 )(VisibleTodoList));
 
 export default VisibleTodoList
