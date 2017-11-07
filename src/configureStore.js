@@ -9,12 +9,10 @@ const configureStore = () => {
     middlewares.push(createLogger());
   }
 
-  const store = createStore(
+  return createStore(
     todoApp,
     applyMiddleware(...middlewares)
   );
-
-  return store;
 }
 
 export default configureStore
