@@ -1,7 +1,7 @@
 import Redux, { createStore } from 'redux';
 import todoApp from './reducers';
 
-const addLoggingToDispatch = (store) => {
+const logger = (store) => {
   return (next) => {
     if (!console.group) {
       return next;
@@ -19,7 +19,7 @@ const addLoggingToDispatch = (store) => {
   };
 };
 
-const addPromiseSupportToDispatch = (store) => {
+const promise = (store) => {
   return (next) => {
     return (action) => {
       if (typeof action.then == 'function') {
@@ -41,10 +41,10 @@ const configureStore = () => {
   const middlewares = [];
 
   if (process.env.NODE_ENV !== 'production') {
-    middlewares.push(addLoggingToDispatch);
+    middlewares.push(logger);
   }
 
-  middlewares.push(addPromiseSupportToDispatch);
+  middlewares.push(promise);
 
   wrapDispatchWithMiddlewares(store, middlewares);
 
