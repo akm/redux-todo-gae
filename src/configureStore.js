@@ -21,12 +21,12 @@ const addLoggingToDispatch = (store) => {
 
 const addPromiseSupportToDispatch = (store) => {
   return (next) => {
-  return (action) => {
-    if (typeof action.then == 'function') {
-      return action.then(next);
-    }
-    return next;
-  };
+    return (action) => {
+      if (typeof action.then == 'function') {
+        return action.then(next);
+      }
+      return next;
+    };
   };
 };
 
