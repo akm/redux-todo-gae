@@ -1,6 +1,6 @@
 import Redux, { createStore, applyMiddleware } from 'redux';
 import promise from 'redux-promise';
-import createLogger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import todoApp from './reducers';
 
 const configureStore = () => {
