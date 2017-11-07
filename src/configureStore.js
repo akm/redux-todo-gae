@@ -1,8 +1,7 @@
 import Redux, { createStore } from 'redux';
 import todoApp from './reducers';
 
-const logger = (store) => {
-  return (next) => {
+const logger = (store) => (next) => {
     if (!console.group) {
       return next;
     }
@@ -16,18 +15,13 @@ const logger = (store) => {
       console.groupEnd(action.type);
       return returnValue;
     };
-  };
 };
 
-const promise = (store) => {
-  return (next) => {
-    return (action) => {
+const promise = (store) => (next) => (action) => {
       if (typeof action.then == 'function') {
         return action.then(next);
       }
       return next;
-    };
-  };
 };
 
 const wrapDispatchWithMiddlewares = (store, middlewares) => {
