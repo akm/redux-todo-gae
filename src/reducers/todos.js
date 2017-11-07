@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import todo from './todo';
 
 const byId = (state = {}, action) => {
   switch (action.type) {
