@@ -2,7 +2,7 @@ import Redux, { createStore } from 'redux';
 import todoApp from './reducers';
 
 const addLoggingToDispatch = (store) => {
-  const next = store.dispatch;
+  return (next) => {
   if (!console.group) {
     return next;
   }
@@ -15,6 +15,7 @@ const addLoggingToDispatch = (store) => {
     console.log('%c next state', 'color: green', store.getState());
     console.groupEnd(action.type);
     return returnValue;
+  };
   };
 }
 
