@@ -23,27 +23,22 @@ const allIds = (state = [], action) => {
   }
 };
 
+const idsByFilter = combineReducers({
+  all: allIds,
+  active: activeIds,
+  completed: completedIds,
+});
+
 const todos = combineReducers({
   byId,
-  allIds,
+  idsByFilter,
 });
 
 export default todos
 
 // Selector functions
-const getAllTodos = (state) =>
-  state.allIds.map(id => state.byId[id]);
 
 export const getVisibleTodos = (state, filter) => {
-  const allTodos = getAllTodos(state);
-  switch (filter) {
-  case 'all':
-    return allTodos;
-  case 'completed':
-    return allTodos.filter(t => t.completed);
-  case 'active':
-    return allTodos.filter(t => !t.completed);
-  default:
-    throw new Error(`Unknown filter: ${filter}.`)
-  }
+  const ids = state.idsByFilter[filter];
+  return ids.map(id => state.byId[id]);
 }
