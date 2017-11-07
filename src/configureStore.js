@@ -28,14 +28,23 @@ const addPromiseSupportToDispatch = (store) => {
   };
 };
 
+const wrapDispatchWithMiddlewares = (store, middlewares) => {
+  middlewares.forEach(middleware =>
+    store.dispatch = middleware(store)
+  );
+};
+
 const configureStore = () => {
   const store = createStore(todoApp)
+  const middlewares = [];
 
   if (process.env.NODE_ENV !== 'production') {
-    store.dispatch = addLoggingToDispatch(store);
+    middlewares.push(addLoggingToDispatch);
   }
 
-  store.dispatch = addPromiseSupportToDispatch(store);
+  middlewares.push(addPromiseSupportToDispatch);
+
+  wrapDispatchWithMiddlewares(store, middlewares);
 
   return store;
 }
