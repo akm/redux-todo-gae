@@ -18,6 +18,6 @@ export default todos
 // Selector functions
 
 export const getVisibleTodos = (state, filter) => {
-  const ids = state.listByFilter[filter];
-  return ids.map(id => state.byId[id]);
+  const ids = fromList.getIds(state.listByFilter[filter]);
+  return ids.map(id => fromById.getTodo(state.byId, id));
 }
