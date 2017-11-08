@@ -1,26 +1,27 @@
 export GOPATH := $(GOPATH):$(PWD):$(PWD)/vendor
 VERSION = $(shell cat ./VERSION)
 
-.PHONY: all checksetup glide_rename glide_install glide_reinstall glide_update check build test ci run show_version deploy update-traffic
+.PHONY: all checksetup dep_lift dep_sink check build test ci run show_version deploy update-traffic
 
 all: check
 
 checksetup:
 	go get golang.org/x/tools/cmd/goimports
 
-glide_rename:
-	cd vendor && mv src/ vendor/
+vendor_lift:
+	mv vendor/Gopkg.* .
+	mv vendor/src/*.* vendor/
+	rm -rf vendor/src
 
-glide_install:
-	cd vendor && glide install
-	cd vendor && mv vendor/ src/
+vendor_sink:
+	mkdir -p vendor/src
+	mv vendor/*.* vendor/src
+	mv Gopkg.* vendor/
 
-glide_reinstall: glide_rename glide_install
+dep_ensure:
+	dep ensure
 
-glide_update:
-	cd vendor && rm -r -f src/
-	cd vendor && glide update
-	cd vendor && mv vendor/ src/
+ensure: vendor_lift dep_ensure vendor_sink
 
 check:
 	go fmt src/api/*.go
