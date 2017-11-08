@@ -22,7 +22,7 @@ const createList = (filter) => {
       return true;
     case 'RECEIVE_TODOS':
       return false;
-    case 'REQUEST_TODOS':
+    default:
       return state;
     }
   };
