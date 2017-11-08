@@ -8,14 +8,14 @@ export const fetchTodos = (filter) => (dispatch, getState) => {
   }
 
   dispatch({
-    type: 'REQUEST_TODOS',
+    type: 'FETCH_TODOS_REQUEST',
     filter,
   });
 
   return api.fetchTodos(filter).then(
     response => {
       dispatch({
-        type: 'RECEIVE_TODOS',
+        type: 'FETCH_TODOS_SUCCESS',
         filter,
         response,
       });
