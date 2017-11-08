@@ -17,7 +17,7 @@ export const fetchTodos = (filter) => (dispatch, getState) => {
     response => {
       console.log(
         'normalized response',
-        normalize(response, schema.arrayOfTodos)
+        normalize(response, [schema.todo])
       );
       dispatch({
         type: 'FETCH_TODOS_SUCCESS',
