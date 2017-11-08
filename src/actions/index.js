@@ -16,13 +16,15 @@ export const fetchTodos = (filter) => (dispatch, getState) => {
     filter,
   });
 
-  return api.fetchTodos(filter).then(response => {
-    dispatch({
-      type: 'RECEIVE_TODOS',
-      filter,
-      response,
-    });
-  });
+  return api.fetchTodos(filter).then(
+    response => {
+      dispatch({
+        type: 'RECEIVE_TODOS',
+        filter,
+        response,
+      });
+    }
+  );
 };
 
 export const addTodo = (text) => ({
