@@ -15,14 +15,10 @@ export const fetchTodos = (filter) => (dispatch, getState) => {
 
   return api.fetchTodos(filter).then(
     response => {
-      console.log(
-        'normalized response',
-        normalize(response, [schema.todo])
-      );
       dispatch({
         type: 'FETCH_TODOS_SUCCESS',
         filter,
-        response,
+        response: normalize(response, [schema.todo]),
       });
     },
     error => {
@@ -37,13 +33,9 @@ export const fetchTodos = (filter) => (dispatch, getState) => {
 
 export const addTodo = (text) => (dispatch) =>
   api.addTodo(text).then(response => {
-    console.log(
-      'normalized response',
-      normalize(response, schema.todo)
-    );
     dispatch({
       type: 'ADD_TODO_SUCCESS',
-      response,
+      response: normalize(response, schema.todo),
     });
   });
 
