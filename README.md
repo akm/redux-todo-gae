@@ -41,3 +41,53 @@ If you want to set it active, run the following command
 ```
 $ make update-traffic
 ```
+
+## Manipulate data
+
+```bash
+$ export BASE_URL="http://localhost:8080"
+$ curl -H 'Content-Type: application/json' -X POST $BASE_URL/todos --data '{"text":"hey"}'
+{"id":"aghkZXZ-Tm9uZXISCxIFdG9kb3MYgICAgICAgAoM","text":"hey","completed":false,"created_at":"2017-11-10T01:12:38.035438658Z","updated_at":"2017-11-10T01:12:38.035438658Z"}$
+$
+$ curl $BASE_URL/todos
+[{"id":"aghkZXZ-Tm9uZXISCxIFdG9kb3MYgICAgICAgAoM","text":"hey","completed":false,"created_at":"2017-11-10T01:12:38.035438Z","updated_at":"2017-11-10T01:12:38.035438Z"}]$
+$
+$ curl -H 'Content-Type: application/json' -X POST $BASE_URL/todos --data '{"text":"ho"}'
+{"id":"aghkZXZ-Tm9uZXISCxIFdG9kb3MYgICAgICAgAkM","text":"ho","completed":false,"created_at":"2017-11-10T01:13:20.952736425Z","updated_at":"2017-11-10T01:13:20.952736425Z"}$
+$
+$ curl $BASE_URL/todos
+[{"id":"aghkZXZ-Tm9uZXISCxIFdG9kb3MYgICAgICAgAkM","text":"ho","completed":false,"created_at":"2017-11-10T01:13:20.952736Z","updated_at":"2017-11-10T01:13:20.952736Z"},{"id":"aghkZXZ-Tm9uZXISCxIFdG9kb3MYgICAgICAgAoM","text":"hey","completed":false,"created_at":"2017-11-10T01:12:38.035438Z","updated_at":"2017-11-10T01:12:38.035438Z"}]$
+$
+$ curl $BASE_URL/todos | jq .
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   334  100   334    0     0   3820      0 --:--:-- --:--:-- --:--:--  3839
+[
+  {
+    "id": "aghkZXZ-Tm9uZXISCxIFdG9kb3MYgICAgICAgAkM",
+    "text": "ho",
+    "completed": false,
+    "created_at": "2017-11-10T01:13:20.952736Z",
+    "updated_at": "2017-11-10T01:13:20.952736Z"
+  },
+  {
+    "id": "aghkZXZ-Tm9uZXISCxIFdG9kb3MYgICAgICAgAoM",
+    "text": "hey",
+    "completed": false,
+    "created_at": "2017-11-10T01:12:38.035438Z",
+    "updated_at": "2017-11-10T01:12:38.035438Z"
+  }
+]
+$
+```
+
+
+### Actions
+
+| Method | Path and Query params | Result | Description |
+|--------|-----------------------|--------|-------------|
+| GET    | /todos                 | Array of Todo | Return all of Todo |
+| Get    | /todos?q=active        | Array of Todo | Return active Todos |
+| Get    | /todos?q=completed     | Array of Todo | Return completed Todos |
+| POST   | /todos                 | Todo  | Insert new Todo |
+| POST   | /todos/:id/toggle      | Todo  | Update Todo to toggle completed and active |
