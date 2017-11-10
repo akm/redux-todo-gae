@@ -2,11 +2,18 @@ import React from 'react';
 
 import Todo from './Todo'
 
+const styles = {
+  wrapper: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+};
+
 const TodoList = ({
   todos,
   onTodoClick
 }) => (
-  <ul>
+  <div style={styles.wrapper}>
     {todos.map(todo =>
       <Todo
         key={todo.id}
@@ -14,7 +21,7 @@ const TodoList = ({
         onClick={() => onTodoClick(todo.id)}
       />
     )}
-  </ul>
+  </div>
 );
 
 export default TodoList

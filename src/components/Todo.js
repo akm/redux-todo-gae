@@ -1,21 +1,27 @@
 import React from 'react';
 
+import Chip from 'material-ui/Chip';
+
+const styles = {
+  chip: {
+    margin: 4,
+  },
+};
+
 const Todo = ({
   onClick,
   completed,
   text
 }) => (
-  <li
+  <Chip
     onClick={onClick}
     style={{
-      textDecoration:
-      completed ?
-        'line-through' :
-        'none'
+      margin: 4,
+      textDecoration: completed ? 'line-through' : 'none',
     }}
   >
     {text}
-  </li>
+  </Chip>
 );
 
 export default Todo
