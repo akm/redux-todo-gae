@@ -7,10 +7,15 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/appengine/log"
 
+	"gae_support"
 	"models"
 )
 
 type TodoHandler struct{}
+func (h *TodoHandler) Collection(action echo.HandlerFunc) echo.HandlerFunc {
+	return gae_support.With(action)
+}
+
 
 func (h *TodoHandler) Index(c echo.Context) error {
 	ctx := c.Get("aecontext").(context.Context)
