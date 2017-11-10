@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import FlatButton from 'material-ui/FlatButton';
 
 const FilterLink = ({ filter, children }) => (
-  <FlatButton>
   <NavLink
     exact
     to={filter === 'all' ? '/' : `/${filter}`}
@@ -13,9 +12,8 @@ const FilterLink = ({ filter, children }) => (
       color: 'black',
     }}
   >
-    {children}
+    <FlatButton>{children}</FlatButton>
   </NavLink>
-  </FlatButton>
 )
 
 export default FilterLink
