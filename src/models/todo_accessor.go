@@ -1,12 +1,57 @@
 package models
 
 import (
+	"errors"
+
 	"golang.org/x/net/context"
 	"google.golang.org/appengine/datastore"
-	// "google.golang.org/appengine/log"
+	"google.golang.org/appengine/log"
 )
 
-type TodoAccessor struct {}
+var ErrNoSuchTodo = errors.New("No such data in Todos")
+
+type TodoAccessor struct{}
+
+func (pa *TodoAccessor) Find(ctx context.Context, id string) (*Todo, error) {
+	m := &Todo{ID: id}
+	err := pa.LoadByID(ctx, m)
+	if err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (pa *TodoAccessor) FindByKey(ctx context.Context, key *datastore.Key) (*Todo, error) {
+	m := &Todo{}
+	err := pa.LoadByKey(ctx, key, m)
+	if err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (pa *TodoAccessor) LoadByID(ctx context.Context, m *Todo) error {
+	key, err := datastore.DecodeKey(m.ID)
+	if err != nil {
+		log.Errorf(ctx, "Failed to decode id(%v) to key because of %v \n", m.ID, err)
+		return err
+	}
+	return pa.LoadByKey(ctx, key, m)
+}
+
+func (pa *TodoAccessor) LoadByKey(ctx context.Context, key *datastore.Key, m *Todo) error {
+	ctx = context.WithValue(ctx, "Todo.key", key)
+	err := datastore.Get(ctx, key, m)
+	switch {
+	case err == datastore.ErrNoSuchEntity:
+		return ErrNoSuchTodo
+	case err != nil:
+		log.Errorf(ctx, "Failed to Get todo key(%v) to key because of %v \n", key, err)
+		return err
+	}
+	m.ID = key.Encode()
+	return nil
+}
 
 func (pa *TodoAccessor) Query() *datastore.Query {
 	return datastore.NewQuery("todos")
