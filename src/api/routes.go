@@ -5,7 +5,11 @@ import (
 )
 
 func SetupRoutes(e *echo.Echo) {
-	h := &TodoHandler{}
+	h := &TodoHandler{
+		TodoIdName: "id",
+	}
 	e.GET("/todos", h.Collection(h.Index))
 	e.POST("/todos", h.Collection(h.Create))
+
+	e.POST("/todos/:id/toggle", h.Member(h.Toggle))
 }
