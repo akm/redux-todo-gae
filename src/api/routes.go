@@ -9,8 +9,10 @@ func SetupRoutes(e *echo.Echo) {
 		TodoIdName: "id",
 	}
 
-	e.GET("/api/todos", h.Collection(h.Index))
-	e.POST("/api/todos", h.Collection(h.Create))
+	g := e.Group("/api/todos", h.Collection)
+	g.GET("", h.Index)
+	g.POST("", h.Create)
 
-	e.POST("/api/todos/:id/toggle", h.Member(h.Toggle))
+	g = e.Group("/api/todos/:id", h.Member)
+	g.POST("/toggle", h.Toggle)
 }
