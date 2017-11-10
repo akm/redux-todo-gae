@@ -38,13 +38,28 @@ check:
 
 	git diff --exit-code
 
-build:
+
+server_build:
 	goapp build	./src/models \
 							./src/api
 
-test:
+server_test:
 	goapp test	./src/models \
 							./src/api
+
+ui_setup:
+	cd ./ui && npm install
+
+ui_build:
+	cd ./ui && npm run build
+	rm -rf ./app/redux-todo/ui
+	cp -R ./ui/dist ./app/redux-todo/ui
+
+ui_test:
+	cd ./ui && npm run test
+
+build: ui_build server_build
+test: ui_test server_test
 
 ci: check test
 

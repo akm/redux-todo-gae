@@ -8,8 +8,11 @@ func SetupRoutes(e *echo.Echo) {
 	h := &TodoHandler{
 		TodoIdName: "id",
 	}
-	e.GET("/todos", h.Collection(h.Index))
-	e.POST("/todos", h.Collection(h.Create))
 
-	e.POST("/todos/:id/toggle", h.Member(h.Toggle))
+	g := e.Group("/api/todos", h.Collection)
+	g.GET("", h.Index)
+	g.POST("", h.Create)
+
+	g = e.Group("/api/todos/:id", h.Member)
+	g.POST("/toggle", h.Toggle)
 }
