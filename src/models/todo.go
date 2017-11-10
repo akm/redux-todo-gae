@@ -56,3 +56,27 @@ func (m *Todo) PutWithNewKey(ctx context.Context) error {
 
 	return nil
 }
+
+func (m *Todo) Update(ctx context.Context) error {
+	m.UpdatedAt = time.Now()
+
+	err := m.Validate()
+	if err != nil {
+		return err
+	}
+
+	key, err := datastore.DecodeKey(m.ID)
+	if err != nil {
+		return err
+	}
+	_, err = datastore.Put(ctx, key, m)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Todo) Toggle(ctx context.Context) error {
+	m.Completed = !m.Completed
+	return m.Update(ctx)
+}
