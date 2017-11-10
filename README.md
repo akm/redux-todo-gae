@@ -1,1 +1,1 @@
-# Shakyou of redux tutorial TODO
+# 写経(shakyou) of redux tutorial TODO
