@@ -7,7 +7,7 @@ api_version: go1     # used when appengine supports different go versions
 # version: alpha                  # you can run multiple versions of an app and A/B test
 
 handlers:
-- url: /.*
+- url: /api/.*
   script: _go_app
 
 nobuild_files:
