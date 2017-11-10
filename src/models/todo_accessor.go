@@ -62,11 +62,11 @@ func (pa *TodoAccessor) All(ctx context.Context) ([]*Todo, error) {
 }
 
 func (pa *TodoAccessor) AllActive(ctx context.Context) ([]*Todo, error) {
-	return pa.ListByCompleted(ctx, true)
+	return pa.ListByCompleted(ctx, false)
 }
 
 func (pa *TodoAccessor) AllCompleted(ctx context.Context) ([]*Todo, error) {
-	return pa.ListByCompleted(ctx, false)
+	return pa.ListByCompleted(ctx, true)
 }
 
 func (pa *TodoAccessor) ListByCompleted(ctx context.Context, completed bool) ([]*Todo, error) {
