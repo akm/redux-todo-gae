@@ -48,7 +48,7 @@ func (h *TodoHandler) Index(c echo.Context) error {
 	accessor := &models.TodoAccessor{}
 
 	var f func(ctx context.Context) ([]*models.Todo, error)
-	completed := c.QueryParam("completed")
+	completed := c.QueryParam("q")
 
 	switch completed {
 	case "completed":
