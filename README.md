@@ -79,3 +79,15 @@ $ curl $BASE_URL/todos | jq .
   }
 ]
 $
+```
+
+
+### Actions
+
+| Method | Path and Query params | Result | Description |
+|--------|-----------------------|--------|-------------|
+| GET    | /todos                 | Array of Todo | Return all of Todo |
+| Get    | /todos?q=active        | Array of Todo | Return active Todos |
+| Get    | /todos?q=completed     | Array of Todo | Return completed Todos |
+| POST   | /todos                 | Todo  | Insert new Todo |
+| POST   | /todos/:id/toggle      | Todo  | Update Todo to toggle completed and active |
